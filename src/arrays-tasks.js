@@ -349,8 +349,14 @@ function createChunks(/* arr, chunkSize */) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  const arr = [];
+  while (arr.length <= len) {
+    for (let i = 0; i < len * 2; i += 1) {
+      arr.push(i);
+    }
+  }
+  return arr.filter((elem) => elem % 2 !== 0);
 }
 
 /**
@@ -504,10 +510,7 @@ function findLongestIncreasingSubsequence(/* nums */) {
  *  propagateItemsByPositionIndex([ 1,2,3,4,5 ]) => [ 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-  const arr2 = [];
-  for (let i = 0; i <= arr.length; i += 1) {
-    arr2.push(arr[i].repeat(i));
-  }
+  return arr.map((elem, index) => Array(index + 1).fill(elem)).flat();
 }
 
 /**
